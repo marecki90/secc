@@ -17,7 +17,7 @@ namespace senc
         private bool projectStep;
         private Block thisBlock;
         private Circuit circuit;
-        private Point PanelMouseDownLocation;
+        //private Point PanelMouseDownLocation;
 
          public Form1(int height, int width)
         {
@@ -127,6 +127,12 @@ namespace senc
             }
         }
 
+        private void windowNewCloseButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*
         private void panel_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) 
@@ -158,88 +164,66 @@ namespace senc
                     panel.Top = 0;
             }
         }
+         */
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WindowPanel sizePanel = new WindowPanel(160, 100);
+            Form sizeForm = new Form();  //(160, 100);
             Label heightLabel = new Label();
             Label widthLabel = new Label();
             TextBox heightText = new TextBox();
             TextBox widthText = new TextBox();
             Button okButton = new Button();
             Button cancelButton = new Button();
-            SemiTransparentPanel panel1 = new SemiTransparentPanel();
-            SemiTransparentPanel panel2 = new SemiTransparentPanel();
-            SemiTransparentPanel panel3 = new SemiTransparentPanel();
-            SemiTransparentPanel panel4 = new SemiTransparentPanel();
-            SemiTransparentPanel panel5 = new SemiTransparentPanel();
+
             int firstColumne = 40;
             int firstline = 10;
+            int secondline = 35;
 
-            ActiveControl = null;
-
-
-            
-
-            //panel1.fitTo(this);
-            //panel2.fitTo(groupBox1);
-            //panel3.fitTo(btnCalc);
-            //panel4.fitTo(btnClear);
-            //panel5.fitTo(btnStep);
-
-            panel = sizePanel;
+            //ActiveControl = null;         
 
 
-            sizePanel.addControl(heightLabel, 55, firstColumne, firstline, "Height:");
-            sizePanel.addControl(widthLabel, 55, firstColumne, firstline + 25, "Width:");
-            sizePanel.addControl(heightText, 25, firstColumne + heightLabel.Width, firstline - 3);
-            sizePanel.addControl(widthText, 25, firstColumne + heightLabel.Width, firstline + 25 - 3);
-            sizePanel.addControl(okButton, 60, 15, 65, "OK");
-            sizePanel.addControl(cancelButton, 60, okButton.Location.X + okButton.Width + 10, 65, "Cancel");
-            
-            //heightLabel.Text = "HEIGHT:";
-            //widthLabel.Text = "WIDTH:";
-            //okButton.Text = "OK";
-            //cancelButton.Text = "Cancel";
+            heightLabel.Text = "HEIGHT:";
+            widthLabel.Text = "WIDTH:";
+            okButton.Text = "OK";
+            cancelButton.Text = "Cancel";
 
-            //heightLabel.Width = 55;
-            //widthLabel.Width = 55;
-            //heightText.Width = 25;
-            //widthText.Width = 25;
-            //okButton.Width = 60;
-            //cancelButton.Width = 60;
+            heightLabel.Width = 55;
+            widthLabel.Width = 55;
+            heightText.Width = 25;
+            widthText.Width = 25;
+            okButton.Width = 60;
+            cancelButton.Width = 60;
 
-            //heightLabel.Location = new Point(40, 10);
-            //widthLabel.Location = new Point(40, 35);
-            //heightText.Location = new Point(heightLabel.Location.X + heightLabel.Width, heightLabel.Location.Y - 3);
-            //widthText.Location = new Point(widthLabel.Location.X + widthLabel.Width, widthLabel.Location.Y - 3);
-            //okButton.Location = new Point(15, 65);
-            //cancelButton.Location = new Point(okButton.Location.X + okButton.Width + 10, 65);
+            heightLabel.Location = new Point(firstColumne, firstline);
+            widthLabel.Location = new Point(firstColumne, secondline);
+            heightText.Location = new Point(firstColumne + heightLabel.Width, firstline - 3);
+            widthText.Location = new Point(firstColumne + widthLabel.Width, secondline - 3);
+            okButton.Location = new Point(15, 65);
+            cancelButton.Location = new Point(okButton.Location.X + okButton.Width + 10, 65);
 
-            Controls.Add(sizePanel);
-            sizePanel.center(this);
-            sizePanel.BringToFront();
 
             //this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
 
-            sizePanel.MouseDown += new MouseEventHandler(panel_MouseDown);
-            sizePanel.MouseMove += new MouseEventHandler(panel_MouseMove);
+
+            sizeForm.Controls.Add(heightLabel);
+            sizeForm.Controls.Add(widthLabel);
+            sizeForm.Controls.Add(heightText);
+            sizeForm.Controls.Add(widthText);
+            sizeForm.Controls.Add(okButton);
+            sizeForm.Controls.Add(cancelButton);
 
 
 
-            //sizePanel.Controls.Add(heightLabel);
-            //sizePanel.Controls.Add(widthLabel);
-            //sizePanel.Controls.Add(heightText);
-            //sizePanel.Controls.Add(widthText);
-            //sizePanel.Controls.Add(okButton);
-            //sizePanel.Controls.Add(cancelButton);
-
-            //sizePanel.Size = new System.Drawing.Size(160, 100);
-            //sizePanel.BorderStyle = BorderStyle.FixedSingle;
-            //sizePanel.Location = new Point(
-            //    this.ClientSize.Width / 2 - sizePanel.Size.Width / 2,
-            //    this.ClientSize.Height / 2 - sizePanel.Size.Height / 2);
+            sizeForm.Size = new Size(160, 100);
+            //sizeForm.BorderStyle = BorderStyle.FixedSingle;
+            sizeForm.Location = new Point(
+                this.ClientSize.Width / 2 - sizeForm.Size.Width / 2,
+                this.ClientSize.Height / 2 - sizeForm.Size.Height / 2);
             //sizePanel.Anchor = AnchorStyles.None;
+            //sizeForm.FormBorderStyle = FormBorderStyle.None;
+
+            sizeForm.Show();
         }
     }
     
