@@ -17,7 +17,7 @@ namespace senc
         private bool projectStep;
         private Block thisBlock;
         private Circuit circuit;
-        //private Point PanelMouseDownLocation;
+        private Point formMouseDownLocation;
 
          public Form1(int height, int width)
         {
@@ -127,44 +127,50 @@ namespace senc
             }
         }
 
-        private void windowNewCloseButton_Click(object sender, EventArgs e)
+        private void windowNewCloseButtonClick(object sender, EventArgs e)
         {
-
+            Button button = sender as Button;
+            Form form = button.Parent as Form;
+            form.Close();
         }
 
-        /*
-        private void panel_MouseDown(object sender, MouseEventArgs e)
+        
+        private void formMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) 
-                PanelMouseDownLocation = e.Location;
+                formMouseDownLocation = e.Location;
         }
-
-        private void panel_MouseMove(object sender, MouseEventArgs e)
+        
+        private void formMouseMove(object sender, MouseEventArgs e)
         {
+            Form form = sender as Form;
+            Console.WriteLine(e.X.ToString() + ", " + e.Y.ToString());
+            /*
             if (e.Button == MouseButtons.Left)
             {
-                if (panel.Left + e.X - PanelMouseDownLocation.X > 0)
+                if (form.Left + e.X - formMouseDownLocation.X > 0)
                 {
-                    if (panel.Left + e.X - PanelMouseDownLocation.X < Width - panel.Width - 16)
-                        panel.Left += e.X - PanelMouseDownLocation.X;
+                    if (form.Left + e.X - formMouseDownLocation.X < Width - form.Width - 16)
+                        form.Left += e.X - formMouseDownLocation.X;
                     else
-                        panel.Left = Width - panel.Width - 16;
+                        form.Left = Width - form.Width - 16;
                 }
                 else
-                    panel.Left = 0;
+                    form.Left = 0;
 
-                if (panel.Top + e.Y - PanelMouseDownLocation.Y > 0)
+                if (form.Top + e.Y - formMouseDownLocation.Y > 0)
                 {
-                    if (panel.Top + e.Y - PanelMouseDownLocation.Y < Height - panel.Height - 39)
-                        panel.Top += e.Y - PanelMouseDownLocation.Y;
+                    if (form.Top + e.Y - formMouseDownLocation.Y < Height - form.Height - 39)
+                        form.Top += e.Y - formMouseDownLocation.Y;
                     else
-                        panel.Top = Height - panel.Height - 39;
+                        form.Top = Height - form.Height - 39;
                 }
                 else
-                    panel.Top = 0;
+                    form.Top = 0;
             }
+            */
         }
-         */
+        
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -206,6 +212,7 @@ namespace senc
             //this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
 
 
+
             sizeForm.Controls.Add(heightLabel);
             sizeForm.Controls.Add(widthLabel);
             sizeForm.Controls.Add(heightText);
@@ -213,15 +220,19 @@ namespace senc
             sizeForm.Controls.Add(okButton);
             sizeForm.Controls.Add(cancelButton);
 
-
+            cancelButton.Click += new EventHandler(windowNewCloseButtonClick);
+            sizeForm.MouseDown += new MouseEventHandler(formMouseDown);
+            sizeForm.MouseMove += new MouseEventHandler(formMouseMove);
+            
 
             sizeForm.Size = new Size(160, 100);
-            //sizeForm.BorderStyle = BorderStyle.FixedSingle;
-            sizeForm.Location = new Point(
-                this.ClientSize.Width / 2 - sizeForm.Size.Width / 2,
-                this.ClientSize.Height / 2 - sizeForm.Size.Height / 2);
+            //sizeForm.Location = new Point(
+            //    this.ClientSize.Width / 2 - sizeForm.Size.Width / 2,
+            //    this.ClientSize.Height / 2 - sizeForm.Size.Height / 2);
+
+            Console.WriteLine(ClientSize.Width.ToString() + ", " + ClientSize.Height.ToString());
             //sizePanel.Anchor = AnchorStyles.None;
-            //sizeForm.FormBorderStyle = FormBorderStyle.None;
+            sizeForm.FormBorderStyle = FormBorderStyle.None;
 
             sizeForm.Show();
         }
