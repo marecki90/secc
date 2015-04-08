@@ -1,0 +1,13 @@
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\bin\Debug\senc.exe.config
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.csprojResolveAssemblyReference.cache
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.Properties.Resources.resources
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.csproj.GenerateResource.Cache
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\bin\Debug\senc.exe
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\bin\Debug\senc.pdb
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.exe
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.pdb
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.Form1.resources
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\bin\Debug\senc.exe.manifest
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\bin\Debug\senc.application
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.exe.manifest
+D:\!Duperele\!Dysk Google\Programowanie\senc\senc\obj\Debug\senc.application
