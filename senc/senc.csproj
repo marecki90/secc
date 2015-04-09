@@ -92,6 +92,9 @@
     <Compile Include="ValueBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="windowNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WindowPanel.cs">
       <SubType>Component</SubType>
     </Compile>

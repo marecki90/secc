@@ -21,6 +21,13 @@ namespace senc
 
         public BlockArray(int height, int width)
         {
+            if(blocks != null)
+            foreach (List<Block> list in blocks)
+                foreach (Block block in list)
+                    block.button.Dispose();
+
+            Block.clearCounter();
+
             this.height = height;
             this.width = width;
             sources = new List<Block>();
@@ -115,7 +122,8 @@ namespace senc
                 }
         }
 
-        public BlockArray newArray(int height, int width)
+        /*
+        public static BlockArray newArray(int height, int width)
         {
             foreach (List<Block> list in blocks)
                 foreach (Block block in list)
@@ -124,5 +132,6 @@ namespace senc
             Block.clearCounter();
             return new BlockArray(height, width);
         }
+        */
     }
 }

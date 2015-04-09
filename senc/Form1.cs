@@ -17,7 +17,7 @@ namespace senc
         private bool projectStep;
         private Block thisBlock;
         private Circuit circuit;
-        private Point formMouseDownLocation;
+        //private Point formMouseDownLocation;
 
          public Form1(int height, int width)
         {
@@ -91,8 +91,6 @@ namespace senc
                 circuit = new Circuit(blockArray);
             else
                 MessageBox.Show("There is no source.");
-
-
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -127,14 +125,14 @@ namespace senc
             }
         }
 
-        private void windowNewCloseButtonClick(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            Form form = button.Parent as Form;
-            form.Close();
-        }
+        //private void closeWindowButtonClick(object sender, EventArgs e)
+        //{
+        //    Button button = sender as Button;
+        //    Form form = button.Parent as Form;
+        //    form.Close();
+        //}
 
-        
+        /*
         private void formMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) 
@@ -145,7 +143,7 @@ namespace senc
         {
             Form form = sender as Form;
             Console.WriteLine(e.X.ToString() + ", " + e.Y.ToString());
-            /*
+            
             if (e.Button == MouseButtons.Left)
             {
                 if (form.Left + e.X - formMouseDownLocation.X > 0)
@@ -168,13 +166,17 @@ namespace senc
                 else
                     form.Top = 0;
             }
-            */
+            
         }
-        
+        */
+
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form sizeForm = new Form();  //(160, 100);
+            windowNew window = new windowNew(this);
+        }
+         /* 
+            Form sizeForm = new Form();
             Label heightLabel = new Label();
             Label widthLabel = new Label();
             TextBox heightText = new TextBox();
@@ -208,11 +210,6 @@ namespace senc
             okButton.Location = new Point(15, 65);
             cancelButton.Location = new Point(okButton.Location.X + okButton.Width + 10, 65);
 
-
-            //this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
-
-
-
             sizeForm.Controls.Add(heightLabel);
             sizeForm.Controls.Add(widthLabel);
             sizeForm.Controls.Add(heightText);
@@ -220,22 +217,15 @@ namespace senc
             sizeForm.Controls.Add(okButton);
             sizeForm.Controls.Add(cancelButton);
 
-            cancelButton.Click += new EventHandler(windowNewCloseButtonClick);
-            sizeForm.MouseDown += new MouseEventHandler(formMouseDown);
-            sizeForm.MouseMove += new MouseEventHandler(formMouseMove);
+            cancelButton.Click += new EventHandler(closeWindowButtonClick);
             
-
-            sizeForm.Size = new Size(160, 100);
-            //sizeForm.Location = new Point(
-            //    this.ClientSize.Width / 2 - sizeForm.Size.Width / 2,
-            //    this.ClientSize.Height / 2 - sizeForm.Size.Height / 2);
-
-            Console.WriteLine(ClientSize.Width.ToString() + ", " + ClientSize.Height.ToString());
-            //sizePanel.Anchor = AnchorStyles.None;
-            sizeForm.FormBorderStyle = FormBorderStyle.None;
-
+            sizeForm.Size = new Size(170, 130);
+            sizeForm.Text = "New...";
+            sizeForm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            sizeForm.StartPosition = FormStartPosition.CenterScreen;
             sizeForm.Show();
         }
+         */
     }
     
 }
