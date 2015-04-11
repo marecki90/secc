@@ -111,7 +111,7 @@ namespace senc
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string path = sfd.FileName;
-                blockArray = FileXML.saveArray(blockArray, path);
+                FileXML.saveArray(path);
             }         
         }
 
@@ -121,7 +121,7 @@ namespace senc
             if ( ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string path = ofd.FileName;
-                blockArray = FileXML.loadArray(blockArray, path);
+                blockArray = FileXML.loadArray(path);
 
                 ////blockArray.clearCurrentArray();
                 //BlockArray tmpBlockArray = FileXML.loadArray(blockArray, path);

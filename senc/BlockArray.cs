@@ -33,16 +33,16 @@ namespace senc
             currentArray = this;
             Console.WriteLine("k z argumentami");
         }
-        public BlockArray(int height, int width, List<List<Block>> blocks, List<Block> sources)
-        {
-            clearCurrentArray();
-            this.height = height;
-            this.width = width;
-            makeBlockList(blocks);
-            //this.blocks = blocks;
-            this.sources = sources;
-            currentArray = this;
-        }
+        //public BlockArray(int height, int width, List<List<Block>> blocks, List<Block> sources)
+        //{
+        //    clearCurrentArray();
+        //    this.height = height;
+        //    this.width = width;
+        //    makeBlockList(blocks);
+        //    //this.blocks = blocks;
+        //    this.sources = sources;
+        //    currentArray = this;
+        //}
 
         // TODO zmienić konstruktor na taki z argumentami
         protected BlockArray()
@@ -118,33 +118,33 @@ namespace senc
 
         }    
         
-        private void makeBlockList(List<List<Block>> blocks)
-        {
-            int size = 25;
+        //private void makeBlockList(List<List<Block>> blocks)
+        //{
+        //    int size = 25;
 
-            Form1.form.Size = new System.Drawing.Size(width * size + 50, height * size + 120);
-            Form1.form.groupBoxOutside.Size = new System.Drawing.Size(width * size + 2, height * size + 40);
-            Form1.form.groupBoxOutside.Location = new System.Drawing.Point(16, 25);
-            Form1.form.groupBox1.Size = new System.Drawing.Size(width * size + 2, height * size + 2);
+        //    Form1.form.Size = new System.Drawing.Size(width * size + 50, height * size + 120);
+        //    Form1.form.groupBoxOutside.Size = new System.Drawing.Size(width * size + 2, height * size + 40);
+        //    Form1.form.groupBoxOutside.Location = new System.Drawing.Point(16, 25);
+        //    Form1.form.groupBox1.Size = new System.Drawing.Size(width * size + 2, height * size + 2);
 
-            this.blocks = blocks;
-            for (int j = 0; j < height; j++)
-            {
-                for (int i = 0; i < width; i++)
-                {
-                    blocks[j].Add(new Block());
+        //    this.blocks = blocks;
+        //    for (int j = 0; j < height; j++)
+        //    {
+        //        for (int i = 0; i < width; i++)
+        //        {
+        //            blocks[j].Add(new Block());
 
-                    Form1.form.addMouseEvent(blocks[j][i].button);
-                    Form1.form.groupBox1.Controls.Add(blocks[j][i].button);
+        //            Form1.form.addMouseEvent(blocks[j][i].button);
+        //            Form1.form.groupBox1.Controls.Add(blocks[j][i].button);
 
 
-                    // DEBUG
-                    blocks[j][i].button.Text = blocks[j][i].id.ToString();
-                    blocks[j][i].button.ForeColor = System.Drawing.Color.Red;
-                    blocks[j][i].button.Font = new System.Drawing.Font(blocks[j][i].button.Font.FontFamily, 6, blocks[j][i].button.Font.Style);// | System.Drawing.FontStyle.Bold);
-                }
-            }
-        }
+        //            // DEBUG
+        //            blocks[j][i].button.Text = blocks[j][i].id.ToString();
+        //            blocks[j][i].button.ForeColor = System.Drawing.Color.Red;
+        //            blocks[j][i].button.Font = new System.Drawing.Font(blocks[j][i].button.Font.FontFamily, 6, blocks[j][i].button.Font.Style);// | System.Drawing.FontStyle.Bold);
+        //        }
+        //    }
+        //}
 
         public void clearCurrentArray()
         {

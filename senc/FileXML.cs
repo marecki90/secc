@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace senc
@@ -18,7 +19,7 @@ namespace senc
             //blockArray = bA;
         }
 
-        public static BlockArray saveArray(BlockArray blockArray, string path)
+        public static void saveArray(string path)
         {
             Type type;
             XmlSerializer writer;
@@ -32,11 +33,10 @@ namespace senc
             Console.WriteLine(path);
             file = new StreamWriter(path);
 
-            writer.Serialize(file, blockArray);
+            writer.Serialize(file, Form1.blockArray);
             file.Close();
-            return blockArray;
         }
-        public static BlockArray loadArray(BlockArray blockArray, string path)
+        public static BlockArray loadArray(string path)
         {
             Type type;
             XmlSerializer writer;
@@ -44,15 +44,30 @@ namespace senc
             StreamReader reader;
             BlockArray newBlockArray;
             List<Button> buttons;
+            XmlDocument xml = new XmlDocument();
+            XmlNodeList xmlWidth;
+            XmlNodeList xmlHeight;
+            int width;
+            int height; 
+
+            xml.Load(path);
+            xmlWidth = xml.GetElementsByTagName("width");
+            xmlHeight = xml.GetElementsByTagName("height");
+            width = Convert.ToInt32(xmlWidth[0].InnerXml);
+            height = Convert.ToInt32(xmlHeight[0].InnerXml);
 
             type = typeof(BlockArray);
             writer = new XmlSerializer(type);
             reader = new StreamReader(path);
             buttons = new List<Button>();
 
-            foreach (List<Block> list in blockArray.blocks)
+
+            Form1.blockArray = new BlockArray(height, width);
+            foreach (List<Block> list in Form1.blockArray.blocks)
                 foreach (Block block in list)
                     buttons.Add(block.button);
+
+            
 
             Block.clearCounter();
             newBlockArray = writer.Deserialize(reader) as BlockArray;

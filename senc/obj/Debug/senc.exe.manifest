@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="senc.exe" size="32256">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="senc.exe" size="31744">
       <assemblyIdentity name="senc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>S0p0dCx51fGhSBV5EukdCKJjtc2mLXZAhPmr093v6rI=</dsig:DigestValue>
+        <dsig:DigestValue>wxtQ4l7fBeL4TxC0fI9L1RcXtO0YShwNz6Sy4Ks9meM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
