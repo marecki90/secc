@@ -62,6 +62,8 @@ namespace senc
 
             cancelButton.Click += new EventHandler(closeWindowButtonClick);
             okButton.Click += new EventHandler(okButtonClick);
+            widthText.KeyDown += new System.Windows.Forms.KeyEventHandler(enterClick);
+            heightText.KeyDown += new System.Windows.Forms.KeyEventHandler(enterClick);
 
             Size = new Size(170, 130);
             Text = "New...";
@@ -75,6 +77,18 @@ namespace senc
             this.Close();
         }
 
+        private void enterClick(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                okButtonClick(sender, e);
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
         private void okButtonClick(object sender, EventArgs e)
         {
             int height;
@@ -82,12 +96,16 @@ namespace senc
             
             if(int.TryParse(heightText.Text, out height) && int.TryParse(widthText.Text, out width))
             {
-                if(height > 0 && width > 13)
+                if(height > 0 && width > 14)
                 {
                     Form1.blockArray = new BlockArray(height, width);
                     this.Close();
                 }
+                else
+                    MessageBox.Show("Wrong value.");
             }
+            else
+                MessageBox.Show("Wrong value.");
         }
 
     }

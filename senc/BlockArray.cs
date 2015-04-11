@@ -14,6 +14,7 @@ namespace senc
         //private const int W = 20;
         //private const int H = 15;
         //public Block[,] blocks;
+        private static BlockArray currentArray;
         public List<List<Block>> blocks;
         public List<Block> sources;
         public int height;
@@ -21,6 +22,12 @@ namespace senc
 
         public BlockArray(int height, int width)
         {
+            if(currentArray != null)
+                if (currentArray.blocks != null)
+                    foreach (List<Block> list in currentArray.blocks)
+                        foreach (Block block in list)
+                            block.button.Dispose();
+
             if(blocks != null)
             foreach (List<Block> list in blocks)
                 foreach (Block block in list)
@@ -33,12 +40,14 @@ namespace senc
             sources = new List<Block>();
             makeBlockList();
             Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            currentArray = this;
         }
         // TODO zmienić konstruktor na taki z argumentami
         protected BlockArray()
         {
             //sources = new List<Block>();
             Console.WriteLine("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+            Console.WriteLine(width.ToString() + ", " + height.ToString());
         }
 
         private void makeBlockList()
