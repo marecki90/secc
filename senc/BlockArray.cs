@@ -14,11 +14,12 @@ namespace senc
         //private const int W = 20;
         //private const int H = 15;
         //public Block[,] blocks;
+        public int height;
+        public int width;
         private static BlockArray currentArray;
         public List<List<Block>> blocks;
         public List<Block> sources;
-        public int height;
-        public int width;
+        
 
         public BlockArray(int height, int width)
         {
@@ -30,6 +31,7 @@ namespace senc
             sources = new List<Block>();
             makeBlockList();
             currentArray = this;
+            Console.WriteLine("k z argumentami");
         }
         public BlockArray(int height, int width, List<List<Block>> blocks, List<Block> sources)
         {
@@ -46,6 +48,7 @@ namespace senc
         protected BlockArray()
         {
             //sources = new List<Block>();
+            Console.WriteLine("k BEZ argumentów");
         }
 
         private void makeBlockList()

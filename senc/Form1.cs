@@ -121,11 +121,11 @@ namespace senc
             if ( ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string path = ofd.FileName;
-                //blockArray = FileXML.loadArray(blockArray, path);
+                blockArray = FileXML.loadArray(blockArray, path);
 
-                //blockArray.clearCurrentArray();
-                BlockArray tmpBlockArray = FileXML.loadArray(blockArray, path);
-                blockArray = new BlockArray(tmpBlockArray.height, tmpBlockArray.width, tmpBlockArray.blocks, tmpBlockArray.sources);
+                ////blockArray.clearCurrentArray();
+                //BlockArray tmpBlockArray = FileXML.loadArray(blockArray, path);
+                //blockArray = new BlockArray(tmpBlockArray.height, tmpBlockArray.width, tmpBlockArray.blocks, tmpBlockArray.sources);
             }
         }
 

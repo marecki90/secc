@@ -27,7 +27,9 @@ namespace senc
 
             type = typeof(BlockArray);
             writer = new XmlSerializer(type);
-            path += ".xml";
+            if (path.Substring(path.Length - 4, 4) != ".xml")
+                path += ".xml";
+            Console.WriteLine(path);
             file = new StreamWriter(path);
 
             writer.Serialize(file, blockArray);
@@ -45,7 +47,6 @@ namespace senc
 
             type = typeof(BlockArray);
             writer = new XmlSerializer(type);
-            //path = @"D:\!Duperele\!Dysk Google\zz Pulpit\" + type.ToString() + ".xml";
             reader = new StreamReader(path);
             buttons = new List<Button>();
 
