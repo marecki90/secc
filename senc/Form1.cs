@@ -108,7 +108,7 @@ namespace senc
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
                 string path = sfd.FileName;
                 FileXML.saveArray(path);
@@ -118,7 +118,7 @@ namespace senc
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            if ( ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if ( ofd.ShowDialog() == DialogResult.OK)
             {
                 string path = ofd.FileName;
                 blockArray = FileXML.loadArray(path);

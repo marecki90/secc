@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace senc
 {
-    public class Block
+    [Serializable()]
+    public class Block : Button
     {
         public const byte left = 8;
         public const byte up = 4;
         public const byte right = 2;
         public const byte down = 1;
-
-        [System.Xml.Serialization.XmlIgnore]
-        public System.Windows.Forms.Button button;
+        public const int size = 25;
 
         [System.Xml.Serialization.XmlIgnore]
         public BlockArray blockArray;
@@ -33,10 +34,31 @@ namespace senc
 
         private static int idCounter;
 
-        public Block()
+        public Block(int x, int y) : base()
         {
+            this.x = x;
+            this.y = y;
             id = ++idCounter;
             type = "";
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderSize = 0;
+            //Margin = new System.Windows.Forms.Padding(0);
+            Margin = new Padding(0, 0, 0, 0);
+            Size = new Size(size, size);
+            BackColor = SystemColors.Control;
+            Location = new Point(size * x + 1, size * y + 1);
+            TabStop = false;
+            Name = "" + x.ToString() + "." + y.ToString();
+
+            // DEBUG
+            Text = id.ToString();
+            ForeColor = Color.Red;
+            Font = new Font(Font.FontFamily, 6, Font.Style); // | System.Drawing.FontStyle.Bold);
+        }
+
+        public Block() : base()
+        {
+            Console.WriteLine("działaj!");
         }
 
         static Block()
@@ -51,7 +73,7 @@ namespace senc
 
         public void setValue (float newValue)
         {
-            this.value = newValue;
+            value = newValue;
             Form1.form.setToolTip(this);
         }
 
@@ -64,13 +86,13 @@ namespace senc
         }
         private void setCurrentWay()
         {
-            if (this.imageNumber == 1 || (this.imageNumber >= 5 && this.imageNumber <= 9))
+            if (imageNumber == 1 || (imageNumber >= 5 && imageNumber <= 9))
                 way = 10;       // 1010 -
-            else if (this.imageNumber == 2)
+            else if (imageNumber == 2)
                 way = 9;        // 1001 -,
-            else if (this.imageNumber == 3)
+            else if (imageNumber == 3)
                 way = 11;       // 1011 T
-            else if (this.imageNumber == 4)
+            else if (imageNumber == 4)
                 way = 15;       // 1111 x
 
             way = rotateByte(way, this.rotateNumber);
@@ -110,9 +132,9 @@ namespace senc
                     imageNumber += number;
 
                 if (imageNumber == 0)
-                    button.Image = null;
+                    this.Image = null;
                 else
-                    button.Image = System.Drawing.Image.FromFile(images[imageNumber][0]);
+                    this.Image = System.Drawing.Image.FromFile(images[imageNumber][0]);
 
                 rotateNumber = 0;
                 setCurrentWay();
@@ -147,25 +169,25 @@ namespace senc
                     rotateNumber = images[imageNumber].Count - 1;
                 else
                     rotateNumber += number;
-                button.Image = System.Drawing.Image.FromFile(images[imageNumber][rotateNumber]);
+                this.Image = System.Drawing.Image.FromFile(images[imageNumber][rotateNumber]);
 
                 setCurrentWay();
             }
         }
         public static void generateImagesList()
         {
-            images = new System.Collections.Generic.List<string>[]
+            images = new List<string>[]
                 { 
-                    new System.Collections.Generic.List<string>(),      // 0
-                    new System.Collections.Generic.List<string>(),      // 1
-                    new System.Collections.Generic.List<string>(),      // 2
-                    new System.Collections.Generic.List<string>(),      // 3
-                    new System.Collections.Generic.List<string>(),      // 4
-                    new System.Collections.Generic.List<string>(),      // 5
-                    new System.Collections.Generic.List<string>(),      // 6
-                    new System.Collections.Generic.List<string>(),      // 7
-                    new System.Collections.Generic.List<string>(),      // 8
-                    new System.Collections.Generic.List<string>()       // 9
+                    new List<string>(),      // 0
+                    new List<string>(),      // 1
+                    new List<string>(),      // 2
+                    new List<string>(),      // 3
+                    new List<string>(),      // 4
+                    new List<string>(),      // 5
+                    new List<string>(),      // 6
+                    new List<string>(),      // 7
+                    new List<string>(),      // 8
+                    new List<string>()       // 9
                 };
 
             //images[0].Add("");

@@ -22,9 +22,9 @@ namespace senc
         {
             inheritBlock(block);
             //this.blockArray = block.blockArray;
-            this.id = ++nodeCounter;
-            this.potential = 0;
-            this.branches = new List<Branch>();
+            id = ++nodeCounter;
+            potential = 0;
+            branches = new List<Branch>();
             this.circuit = circuit;
             if (block.imageNumber == 8 || block.imageNumber == 9)
                 isSource = true;
@@ -33,10 +33,10 @@ namespace senc
 
         public void inheritBlock(Block block)
         {
-            this.x = block.x;
-            this.y = block.y;
-            this.way = block.way;
-            this.blockID = block.id;
+            x = block.x;
+            y = block.y;
+            way = block.way;
+            blockID = block.id;
         }
     }
 }

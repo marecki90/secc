@@ -202,7 +202,7 @@
         }
         public void setToolTip(Block block)
         {
-            this.toolTip1.SetToolTip(block.button, "" + block.value);
+            this.toolTip1.SetToolTip(block, "" + block.value);
         }
         
         #endregion

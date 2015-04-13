@@ -12,35 +12,31 @@ namespace senc
 {
     public class FileXML
     {
-        //private BlockArray blockArray;
-
-        public FileXML(BlockArray bA)
+        public FileXML()
         {
-            //blockArray = bA;
         }
 
         public static void saveArray(string path)
         {
             Type type;
             XmlSerializer writer;
-            //string path;
             StreamWriter file;
 
             type = typeof(BlockArray);
             writer = new XmlSerializer(type);
             if (path.Substring(path.Length - 4, 4) != ".xml")
                 path += ".xml";
-            Console.WriteLine(path);
+            //Console.WriteLine(path);
             file = new StreamWriter(path);
 
             writer.Serialize(file, Form1.blockArray);
             file.Close();
         }
+        
         public static BlockArray loadArray(string path)
         {
             Type type;
             XmlSerializer writer;
-            //string path;
             StreamReader reader;
             BlockArray newBlockArray;
             List<Button> buttons;
@@ -61,30 +57,31 @@ namespace senc
             reader = new StreamReader(path);
             buttons = new List<Button>();
 
-
+            
             Form1.blockArray = new BlockArray(height, width);
+            /*
             foreach (List<Block> list in Form1.blockArray.blocks)
                 foreach (Block block in list)
                     buttons.Add(block.button);
-
+            */
             
 
             Block.clearCounter();
             newBlockArray = writer.Deserialize(reader) as BlockArray;
             reader.Close();
-
-            int buttonIndex = 0;
+            
+            //int buttonIndex = 0;
             foreach (List<Block> list in newBlockArray.blocks)
                 foreach (Block block in list)
                 {
                     block.blockArray = newBlockArray;
-                    block.button = buttons[buttonIndex];
+                    //block.button = buttons[buttonIndex];
                     block.changeImage(0);
                     block.rotateImage(block.rotateNumber);
                     block.setValue(block.value);
-                    buttonIndex++;
+                    //buttonIndex++;
                 }
-
+            
             return newBlockArray;           
         }
     }
